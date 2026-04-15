@@ -2,13 +2,6 @@ import json
 import sys
 
 
-def macro(data, *keys: str) -> str:
-    m = data["macro"]
-    idx = len(m)
-    m.append([["down", k] for k in keys] + [["up", k] for k in reversed(keys)])
-    return f"QK_MACRO_{idx}"
-
-
 def main(path: str) -> None:
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
@@ -31,14 +24,14 @@ def main(path: str) -> None:
 
     # Windows
     l3[5][2] = "LM(5,MOD_LALT)"  # Alt
-    l3[3][0] = macro(data, "KC_LEFT_ALT", "KC_LEFT_SHIFT")  # Caps Lock
+    l3[3][0] = "LALT(LSFT(KC_NO))"  # Caps Lock
 
     l4[4][4], l5[4][4] = l5[4][4], l4[4][4]  # RGB_TEST
     for i in range(1, 13):
         l4[1][i], l5[1][i] = l5[1][i], l4[1][i]
 
     l5[2][1] = "KC_F4"  # Q
-    l5[3][13] = macro(data, "KC_LEFT_CTRL", "KC_ENTER")  # Enter
+    l5[3][13] = "LCTL(KC_ENTER)"  # Enter
 
     # Linux
     l5[4][3] = "KC_CUT"  # X
