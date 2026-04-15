@@ -15,6 +15,11 @@ def main(path: str) -> None:
 
     l0, l1, l2, l3, l4, l5, *_ = data["layout"]
 
+    # System Selection (Mac and Win/Linux)
+    for l in l1, l4:
+        l[3][1] = "DF(0)"  # Fn + A → Mac
+        l[3][2] = "DF(3)"  # Fn + S → Win
+
     # macOS
     l0[5][1] = "LM(2,MOD_LALT)"  # Opt
     l0[5][2] = "LM(2,MOD_LGUI)"  # Cmd
