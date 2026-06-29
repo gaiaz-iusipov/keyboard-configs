@@ -8,7 +8,7 @@ def main(path: str) -> None:
 
     l0, l1, l2, l3, l4, l5, *_ = data["layout"]
 
-    # System Selection (Mac and Win/Linux)
+    # System Selection (Mac and Linux)
     for l in l1, l4:
         l[3][1] = "DF(0)"  # Fn + A → Mac
         l[3][2] = "DF(3)"  # Fn + S → Win
@@ -22,9 +22,8 @@ def main(path: str) -> None:
     for i in range(1, 13):
         l2[1][i] = "KC_TRANSPARENT"
 
-    # Windows
+    # Linux
     l3[5][2] = "LM(5,MOD_LALT)"  # Alt
-    l3[3][0] = "LALT(LSFT(KC_NO))"  # Caps Lock
 
     l4[4][4], l5[4][4] = l5[4][4], l4[4][4]  # RGB_TEST
     for i in range(1, 13):
@@ -33,7 +32,6 @@ def main(path: str) -> None:
     l5[2][1] = "KC_F4"  # Q
     l5[3][13] = "LCTL(KC_ENTER)"  # Enter
 
-    # Linux
     l5[4][3] = "KC_CUT"  # X
     l5[4][4] = "KC_COPY"  # C
     l5[4][5] = "KC_PASTE"  # V
