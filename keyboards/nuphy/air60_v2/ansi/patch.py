@@ -13,11 +13,13 @@ def main(path: str) -> None:
         l[3][1] = "DF(0)"  # Fn + A → Mac
         l[3][2] = "DF(3)"  # Fn + S → Win
 
+    # RGB_TEST
+    for a, b in [(l1, l2), (l4, l5)]:
+        a[4][4], b[4][4] = b[4][4], a[4][4]
+
     # macOS
     l0[5][1] = "LM(2,MOD_LALT)"  # Opt
     l0[5][2] = "LM(2,MOD_LGUI)"  # Cmd
-
-    l1[4][4], l2[4][4] = l2[4][4], l1[4][4]  # RGB_TEST
 
     for i in range(1, 13):
         l2[1][i] = "KC_TRANSPARENT"
@@ -25,11 +27,11 @@ def main(path: str) -> None:
     # Linux
     l3[5][2] = "LM(5,MOD_LALT)"  # Alt
 
-    l4[4][4], l5[4][4] = l5[4][4], l4[4][4]  # RGB_TEST
     for i in range(1, 13):
         l4[1][i], l5[1][i] = l5[1][i], l4[1][i]
 
     l5[2][1] = "KC_F4"  # Q
+    l4[2][10] = "KC_PRINT_SCREEN"  # P
     l5[3][13] = "LCTL(KC_ENTER)"  # Enter
 
     l5[4][3] = "KC_CUT"  # X
