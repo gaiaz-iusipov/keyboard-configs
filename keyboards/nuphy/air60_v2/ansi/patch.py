@@ -2,6 +2,13 @@ import json
 import sys
 
 
+def macro(data, *keys: str) -> str:
+    m = data["macro"]
+    idx = len(m)
+    m.append([["down", k] for k in keys] + [["up", k] for k in reversed(keys)])
+    return f"QK_MACRO_{idx}"
+
+
 def main(path: str) -> None:
     with open(path, encoding="utf-8") as f:
         data = json.load(f)
@@ -21,6 +28,8 @@ def main(path: str) -> None:
     l0[5][1] = "LM(2,MOD_LALT)"  # Opt
     l0[5][2] = "LM(2,MOD_LGUI)"  # Cmd
 
+    l1[3][9] = macro(data, "KC_LCTL", "KC_LGUI", "KC_Q")  # Fn + L → Lock Screen
+
     for i in range(1, 13):
         l2[1][i] = "KC_TRANSPARENT"
 
@@ -30,8 +39,10 @@ def main(path: str) -> None:
     for i in range(1, 13):
         l4[1][i], l5[1][i] = l5[1][i], l4[1][i]
 
-    l5[2][1] = "KC_F4"  # Q
     l4[2][10] = "KC_PRINT_SCREEN"  # P
+    l4[3][9] = macro(data, "KC_LGUI", "KC_L")  # Fn + L → Lock Screen
+
+    l5[2][1] = "KC_F4"  # Q
     l5[3][13] = "LCTL(KC_ENTER)"  # Enter
 
     l5[4][3] = "KC_CUT"  # X
