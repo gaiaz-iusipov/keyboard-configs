@@ -15,10 +15,10 @@ def main(path: str) -> None:
 
     l0, l1, l2, l3, l4, l5, *_ = data["layout"]
 
-    # System Selection (Mac and Linux)
+    # System Selection (macOS and Linux)
     for l in l1, l4:
-        l[3][1] = "DF(0)"  # Fn + A → Mac
-        l[3][2] = "DF(3)"  # Fn + S → Win
+        l[3][1] = "DF(0)"  # Fn + A → macOS
+        l[3][2] = "DF(3)"  # Fn + S → Linux
 
     # RGB_TEST
     for a, b in [(l1, l2), (l4, l5)]:
